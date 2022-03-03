@@ -1,5 +1,8 @@
 package com.example.withpet_01.api.domain;
 
+import com.example.withpet_01.api.domain.common.CommonDateEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,16 +23,19 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "user")
-public class User implements UserDetails {
+public class User extends CommonDateEntity implements UserDetails  {
 
     @Id // pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long uNum;
-    @Column(nullable = false, unique = true, length = 50)
+
+    @Column(nullable = false, unique = true, length = 50) // SNS ID
     private String id;
     @Setter
-    @Column(nullable = true)
+    @Column(nullable = true, unique = true) // 닉네임
     private String name;
     @Column(nullable = true)
     private String phoneNum;
@@ -39,9 +45,14 @@ public class User implements UserDetails {
     @Column(length = 100)
     private String provider;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(nullable = true)
-//    private Role userRole;
+    @JsonIgnore // 일단은..
+    @OneToMany(mappedBy = "owner")
+    private List<Pet> pets = new ArrayList<>();
+
+    @JsonIgnore // 일단은..
+    @OneToMany(mappedBy = "author")
+    private List<Post> posts = new ArrayList<>();
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();

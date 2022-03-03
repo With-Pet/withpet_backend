@@ -1,8 +1,8 @@
 package com.example.withpet_01.api.service;
 
-import com.example.withpet_01.api.dto.CommonResult;
-import com.example.withpet_01.api.dto.ListResult;
-import com.example.withpet_01.api.dto.SingleResult;
+import com.example.withpet_01.api.dto.login.CommonResult;
+import com.example.withpet_01.api.dto.login.ListResult;
+import com.example.withpet_01.api.dto.login.SingleResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

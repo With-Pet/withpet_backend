@@ -27,9 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // 다음 리퀘스트에 대한 사용권한 체크
                 .antMatchers("/*/signin", "/*/signin/**", "/*/signup", "/*/signup/**", "/social/**", "/h2-console/**").permitAll()
                 .and()
+                .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+                .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
-
-
     }
 
     // web server에 대한 처리(정적 리소스)

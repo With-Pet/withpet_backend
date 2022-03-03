@@ -4,8 +4,8 @@ import com.example.withpet_01.api.advice.exception.CUserExistException;
 import com.example.withpet_01.api.advice.exception.CUserNotFoundException;
 import com.example.withpet_01.api.config.security.JwtTokenProvider;
 import com.example.withpet_01.api.domain.User;
-import com.example.withpet_01.api.dto.CommonResult;
-import com.example.withpet_01.api.dto.SingleResult;
+import com.example.withpet_01.api.dto.login.CommonResult;
+import com.example.withpet_01.api.dto.login.SingleResult;
 import com.example.withpet_01.api.dto.login.KakaoProfile;
 import com.example.withpet_01.api.repository.UserRepository;
 import com.example.withpet_01.api.service.ResponseService;
@@ -14,7 +14,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -29,7 +28,6 @@ public class SignController {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final ResponseService responseService;
-    private final PasswordEncoder passwordEncoder;
     private final KakaoService kakaoService;
 
     @ApiOperation(value = "소셜 로그인", notes = "소셜 회원 로그인을 한다.")
@@ -47,44 +45,19 @@ public class SignController {
     @PostMapping(value = "/signup/{provider}")
     public CommonResult signupProvider(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
                                        @ApiParam(value = "소셜 access_token", required = true) @RequestParam String accessToken,
-                                       @ApiParam(value = "이름", required = true) @RequestParam String name) {
+                                       @ApiParam(value = "닉네임", required = true) @RequestParam String name) {
 
         KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
         Optional<User> user = userRepository.findByidAndProvider(String.valueOf(profile.getId()), provider);
-        if(user.isPresent())
+        if (user.isPresent())
             throw new CUserExistException();
 
         userRepository.save(User.builder()
-                .id(String.valueOf(profile.getId()))
+                .id(String.valueOf(profile.getId())) // sns계정 "id" : 12321412
                 .provider(provider)
                 .name(name)
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
         return responseService.getSuccessResult();
     }
-    //    @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
-//    @PostMapping(value = "/signin")
-//    public SingleResult<String> signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
-//                                       @ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
-//        User user = userJpaRepo.findByid(id).orElseThrow(CEmailSigninFailedException::new);
-//        if (!passwordEncoder.matches(password, user.getPassword()))
-//            throw new CEmailSigninFailedException();
-//
-//        return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getUNum()), user.getRoles()));
-//
-//    }
-
-//    @ApiOperation(value = "가입", notes = "회원가입을 한다.")
-//    @PostMapping(value = "/signup")
-//    public CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
-//                               @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
-//                               @ApiParam(value = "이름", required = true) @RequestParam String name) {
-//
-//        userJpaRepo.save(User.builder()
-//                .id(id)
-//                .name(name)
-//                .roles(Collections.singletonList("ROLE_USER"))
-//                .build());
-//        return responseService.getSuccessResult();
-//    }
 }

@@ -1,4 +1,4 @@
-package com.example.withpet_01.api.dto;
+package com.example.withpet_01.api.dto.login;
 
 import lombok.Getter;
 import lombok.Setter;

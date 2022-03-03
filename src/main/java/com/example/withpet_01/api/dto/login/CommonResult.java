@@ -1,4 +1,4 @@
-package com.example.withpet_01.api.dto;
+package com.example.withpet_01.api.dto.login;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
