@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 @Getter
 public class Pet extends CommonDateEntity {
     @Id
-    @GeneratedValue
-    @Column(name = "pet_id")
-    private Long petId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 5, nullable = false, unique = true)
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

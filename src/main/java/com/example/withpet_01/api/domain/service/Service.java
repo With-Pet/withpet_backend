@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype") // 구분자 컬럼
-@Getter @Setter
+@Getter
+@Setter
 public abstract class Service {
     @Id
     @GeneratedValue

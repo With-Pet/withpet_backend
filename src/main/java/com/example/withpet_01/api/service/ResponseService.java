@@ -1,8 +1,10 @@
 package com.example.withpet_01.api.service;
 
+import com.example.withpet_01.api.dto.Post.PageResult;
 import com.example.withpet_01.api.dto.login.CommonResult;
 import com.example.withpet_01.api.dto.login.ListResult;
 import com.example.withpet_01.api.dto.login.SingleResult;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,6 +47,15 @@ public class ResponseService {
         setSuccessResult(result);
         return result;
     }
+
+    // 페이징 결과를 처리하는 메소드
+    public <T> ListResult<T> getPageResult(Page<T> list) {
+        ListResult<T> result = new ListResult<>();
+        result.setList(list.getContent());
+        setSuccessResult(result);
+        return result;
+    }
+
     // 성공 결과만 처리하는 메소드
     public CommonResult getSuccessResult() {
         CommonResult result = new CommonResult();
