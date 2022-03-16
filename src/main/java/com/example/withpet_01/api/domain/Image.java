@@ -42,13 +42,13 @@ public class Image {
         this.fileSize = fileSize;
     }
 
-    // Post 정보 저장
-    public void setPost(Post post){
-        this.post = post;
-
-        // 게시글에 현재 파일이 존재하지 않는다면
-        if(!post.getPostImage().contains(this))
-            // 파일 추가
-            post.getPostImage().add(this);
-    }
+//    // Post 정보 저장
+//    public void setPost(Post post){
+//        this.post = post;
+//
+//        // 게시글에 현재 파일이 존재하지 않는다면
+//        if(!post.getPostImage().contains(this))
+//            // 파일 추가
+//            post.getPostImage().add(this);
+//    }
 }

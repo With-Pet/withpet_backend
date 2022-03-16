@@ -47,17 +47,17 @@ public class Post extends CommonDateEntity {
     @Column(length = 100, nullable = false)
     private String postLocation;    //게시물 지역 명
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "service_id")
-    private Service service;        //서비스 상세
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "service_id")
+//    private Service service;        //서비스 상세
 
     @Column(length = 1000)
     private String postRequested;   //요청 사항
 
-    //하나의 게시글이 여러 파일을 가지므로 N(postImage) : 1(post) 관계가 된다.
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "image_id")
-    private List<Image> postImage = new ArrayList<>();    //게시물 사진
+//    //하나의 게시글이 여러 파일을 가지므로 N(postImage) : 1(post) 관계가 된다.
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "image_id")
+//    private List<Image> postImage = new ArrayList<>();    //게시물 사진
 
     @Column(length = 100, nullable = false)
     private LocalDateTime postSTime;    //시작 날짜
@@ -65,19 +65,29 @@ public class Post extends CommonDateEntity {
     @Column(length = 100, nullable = false)
     private LocalDateTime postETime;    //종료 날짜
 
+    @Column(length = 1000, nullable = false)
+    private String x;    //위도
+
+    @Column(length = 1000, nullable = false)
+    private String y;    //경도
+
+    @Column(length = 1, nullable = false)
+    private boolean postFav;    //즐겨찾기 여부 TRUE : O , FALSE : X default : FALSE
+
+
     public Post setUpdate(String postAuthor, String postTitle) {
         this.postAuthor = postAuthor;
         this.postTitle = postTitle;
         return this;
     }
 
-    // Post 에서 파일 처리 위함
-    public void addPhoto(Image postImage) {
-        this.postImage.add(postImage);
-
-        // 게시글에 파일이 저장되어있지 않은 경우
-        if(postImage.getPost() != this)
-            // 파일 저장
-            postImage.setPost(this);
-    }
+//    // Post 에서 파일 처리 위함
+//    public void addPhoto(Image postImage) {
+//        this.postImage.add(postImage);
+//
+//        // 게시글에 파일이 저장되어있지 않은 경우
+//        if(postImage.getPost() != this)
+//            // 파일 저장
+//            postImage.setPost(this);
+//    }
 }

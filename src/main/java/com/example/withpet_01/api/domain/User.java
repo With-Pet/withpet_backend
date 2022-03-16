@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -44,6 +45,15 @@ public class User extends CommonDateEntity implements UserDetails  {
     private String email;
     @Column(length = 100)
     private String provider;
+
+    @Column(length = 100)
+    private String searchLocation; //검색용 주소
+
+    @Column(length = 1000)
+    private String searchX; //검색용 x좌표
+
+    @Column(length = 1000)
+    private String searchY; //검색용 y좌표
 
     @JsonIgnore // 일단은..
     @OneToMany(mappedBy = "owner")

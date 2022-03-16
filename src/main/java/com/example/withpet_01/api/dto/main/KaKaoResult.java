@@ -9,6 +9,6 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Address  {
-    ArrayList<Documents> documents = new ArrayList<Documents>();
+public class KaKaoResult {
+    private ArrayList<Documents> documents;
 }

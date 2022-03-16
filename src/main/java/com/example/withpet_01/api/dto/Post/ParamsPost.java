@@ -62,4 +62,9 @@ public class ParamsPost {
     @ApiModelProperty(value = "종료날짜", required = true)
     private LocalDateTime postETime;
 
+    @NotBlank(message = "반려동물을 선택해주세요")
+    @ApiModelProperty(value = "반려동물 고유 아이디", required = true)
+    private int petId;
+
+
 }
