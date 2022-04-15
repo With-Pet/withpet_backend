@@ -79,4 +79,14 @@ public class UserController {
         return responseService.getSuccessResult();
     }
 
+    @ApiOperation(value = "FCM 토큰 저장", notes = "회원의 FCM토큰을 저장한다.")
+    @PostMapping()
+    public CommonResult saveFCMToken(
+            @ApiParam(value = "회원번호", required = true) @PathVariable long msrl) {
+
+        userRepository.deleteById(msrl);
+        // 성공 결과 정보만 필요한경우 getSuccessResult()를 이용하여 결과를 출력한다.
+        return responseService.getSuccessResult();
+    }
+
 }

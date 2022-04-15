@@ -63,9 +63,12 @@ public class User extends CommonDateEntity implements UserDetails  {
     @OneToMany(mappedBy = "postAuthor")
     private List<Post> posts = new ArrayList<>();
 
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
+
+    private String usrToken; //회원 토큰
 
     public User update(String name){
         this.name = name;

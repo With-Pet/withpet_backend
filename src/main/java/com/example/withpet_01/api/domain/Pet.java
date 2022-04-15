@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 public class Pet extends CommonDateEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 5, nullable = false, unique = true)

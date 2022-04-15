@@ -137,6 +137,4 @@ public class PostController {
 //        boardService.deletePost(postId, uid);
 //        return responseService.getSuccessResult();
 //    }
-
-
 }

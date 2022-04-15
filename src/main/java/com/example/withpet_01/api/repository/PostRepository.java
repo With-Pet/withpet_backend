@@ -16,7 +16,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Post findById(int id);
 
+    //Todo -> jpql
     Page<Post> findByPostSTimeGreaterThanAndPostETimeLessThanAndPostPriceBetweenAndPostType(Pageable pageable, LocalDateTime minTime, LocalDateTime maxTime,String minPrice, String maxPrice, String postType);
+
 
 
 }
