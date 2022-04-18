@@ -59,9 +59,9 @@ public class User extends CommonDateEntity implements UserDetails  {
 //    @OneToMany(mappedBy = "owner")
 //    private List<Pet> pets = new ArrayList<>();
 
-    @JsonIgnore // 일단은..
-    @OneToMany(mappedBy = "postAuthor")
-    private List<Post> posts = new ArrayList<>();
+//    @JsonIgnore // 일단은..
+//    @OneToMany(mappedBy = "postAuthor")
+//    private List<Post> posts = new ArrayList<>();
 
 
     @ElementCollection(fetch = FetchType.EAGER)
