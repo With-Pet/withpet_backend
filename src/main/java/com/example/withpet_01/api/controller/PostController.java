@@ -1,8 +1,7 @@
 package com.example.withpet_01.api.controller;
 
 import com.example.withpet_01.api.domain.Post;
-import com.example.withpet_01.api.domain.User;
-import com.example.withpet_01.api.dto.Post.ParamsPost;
+import com.example.withpet_01.api.dto.post.ParamsPost;
 import com.example.withpet_01.api.dto.login.ListResult;
 import com.example.withpet_01.api.dto.login.SingleResult;
 import com.example.withpet_01.api.repository.UserRepository;

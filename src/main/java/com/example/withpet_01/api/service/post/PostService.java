@@ -6,7 +6,7 @@ import com.example.withpet_01.api.advice.exception.CUserNotFoundException;
 import com.example.withpet_01.api.domain.Post;
 import com.example.withpet_01.api.domain.User;
 import com.example.withpet_01.api.domain.handler.FileHandler;
-import com.example.withpet_01.api.dto.Post.ParamsPost;
+import com.example.withpet_01.api.dto.post.ParamsPost;
 import com.example.withpet_01.api.dto.main.KaKaoAddressResult;
 import com.example.withpet_01.api.dto.main.KaKaoResult;
 import com.example.withpet_01.api.repository.PostImageRepository;
@@ -73,6 +73,8 @@ public class PostService {
                 .postType(paramsPost.getPostType())
                 .postSTime(paramsPost.getPostSTime())
                 .postETime(paramsPost.getPostETime())
+                .x(paramsPost.getX())
+                .y(paramsPost.getY())
                 .postTitle(paramsPost.getPostTitle())
                 .postLocation(paramsPost.getPostLocation())
                 .postRequested(paramsPost.getPostRequested())

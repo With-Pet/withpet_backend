@@ -1,4 +1,4 @@
-package com.example.withpet_01.api.dto.Post;
+package com.example.withpet_01.api.dto.post;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -39,6 +39,14 @@ public class ParamsPost {
     @ApiModelProperty(value = "시간당 이용 금액", required = true)
     private String postPrice;
 
+    @NotNull
+    @ApiModelProperty(value = "경도", required = true)
+    private String x;
+
+    @NotNull
+    @ApiModelProperty(value = "위도", required = true)
+    private String y;
+
     @NotEmpty(message = "지역명은 필수 값입니다.")
     @Size(min = 1, max = 100, message = "지역명은 최소 2자에서 100자까지입니다.")
     @ApiModelProperty(value = "지역명", required = true)
@@ -62,9 +70,9 @@ public class ParamsPost {
     @ApiModelProperty(value = "종료날짜", required = true)
     private LocalDateTime postETime;
 
-    @NotBlank(message = "반려동물을 선택해주세요")
-    @ApiModelProperty(value = "반려동물 고유 아이디", required = true)
-    private int petId;
+//    @NotBlank(message = "반려동물을 선택해주세요")
+//    @ApiModelProperty(value = "반려동물 고유 아이디", required = true)
+//    private int petId;
 
 
 }

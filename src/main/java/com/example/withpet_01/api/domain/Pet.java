@@ -7,35 +7,35 @@ import lombok.Getter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+//@Entity
 @Getter
 public class Pet extends CommonDateEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 5, nullable = false, unique = true)
-    private int id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User owner;
-
-    private String name;
-
-    private LocalDateTime birthday;
-
-    private String kind;
-
-    @Column(length = 500)
-    private String note;
-
-    private Long weight;
-
-    @Column(length = 500)
-    private String review; //?
-
-    private boolean neuralization;
-
-    @Enumerated(EnumType.STRING)
-    private PetSex sex;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(length = 5, nullable = false, unique = true)
+//    private int id;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User owner;
+//
+//    private String name;
+//
+//    private LocalDateTime birthday;
+//
+//    private String kind;
+//
+//    @Column(length = 500)
+//    private String note;
+//
+//    private Long weight;
+//
+//    @Column(length = 500)
+//    private String review; //?
+//
+//    private boolean neuralization;
+//
+//    @Enumerated(EnumType.STRING)
+//    private PetSex sex;
 }

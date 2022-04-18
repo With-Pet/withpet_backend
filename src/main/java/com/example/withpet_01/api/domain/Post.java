@@ -33,10 +33,10 @@ public class Post extends CommonDateEntity {
 
     @Column(length = 1, nullable = false)
     private String postType;        // 산책 : W, 돌봄 : C, 체험 : E
-
-    @JoinColumn(name = "pet_id")
-    @OneToOne
-    private Pet pet;                //게시물 펫
+//
+//    @JoinColumn(name = "pet_id")
+//    @OneToOne
+//    private Pet pet;                //게시물 펫
 
     @Column(nullable = false, length = 100)
     private String postTitle;       //게시물 제목

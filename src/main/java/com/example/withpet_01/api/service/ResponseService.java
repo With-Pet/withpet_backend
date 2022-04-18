@@ -1,6 +1,5 @@
 package com.example.withpet_01.api.service;
 
-import com.example.withpet_01.api.dto.Post.PageResult;
 import com.example.withpet_01.api.dto.login.CommonResult;
 import com.example.withpet_01.api.dto.login.ListResult;
 import com.example.withpet_01.api.dto.login.SingleResult;

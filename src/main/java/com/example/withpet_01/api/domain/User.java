@@ -55,9 +55,9 @@ public class User extends CommonDateEntity implements UserDetails  {
     @Column(length = 1000)
     private String searchY; //검색용 y좌표
 
-    @JsonIgnore // 일단은..
-    @OneToMany(mappedBy = "owner")
-    private List<Pet> pets = new ArrayList<>();
+//    @JsonIgnore // 일단은..
+//    @OneToMany(mappedBy = "owner")
+//    private List<Pet> pets = new ArrayList<>();
 
     @JsonIgnore // 일단은..
     @OneToMany(mappedBy = "postAuthor")
