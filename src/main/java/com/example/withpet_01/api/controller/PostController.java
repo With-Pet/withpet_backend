@@ -75,14 +75,14 @@ public class PostController {
         return responseService.getSingleResult(postService.returnDetail(postId));
     }
 
-    @ApiOperation(value = "예약 내역 반환", notes = "예약 상태에 따라 돌봄을 신청한 내역, 돌봄을 받은 내역으로 구분한다." +
-                                                 "B : 이용 전, U : 이용 중, A : 이용 후")
-    @GetMapping(value = "/returnReservation")
-    public ListResult<Post> returnReservation() {
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //String id = authentication.getName(); // 쓰레드 로컬에서 관리함, userdetail의 값을 사용한다. snsid
-        return responseService.getListResult(postService.returnReservation("1"));
-    }
+//    @ApiOperation(value = "예약 내역 반환", notes = "예약 상태에 따라 돌봄을 신청한 내역, 돌봄을 받은 내역으로 구분한다." +
+//                                                 "B : 이용 전, U : 이용 중, A : 이용 후")
+//    @GetMapping(value = "/returnReservation")
+//    public ListResult<Post> returnReservation() {
+//        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        //String id = authentication.getName(); // 쓰레드 로컬에서 관리함, userdetail의 값을 사용한다. snsid
+//        return responseService.getListResult(postService.returnReservation("1"));
+//    }
 
     @ApiOperation(value = "예약 내역 반환", notes = "")
     @GetMapping(value = "/returnReservationDetail/{postId}")

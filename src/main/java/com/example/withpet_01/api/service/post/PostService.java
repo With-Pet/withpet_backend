@@ -199,11 +199,11 @@ public class PostService {
         return post;
     }
 
-    @Transactional
-    public List<Post> returnReservation(String id) {
-        User user = userRepository.findById(id).orElseThrow(CUserNotFoundException::new);
-        return user.getPosts();
-    }
+//    @Transactional
+//    public List<Post> returnReservation(String id) {
+//        User user = userRepository.findById(id).orElseThrow(CUserNotFoundException::new);
+//        return user.getPosts();
+//    }
 
     @Transactional
     public Post returnReservationDetail(int postId) {
