@@ -59,5 +59,6 @@ public class SignController {
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
         return responseService.getSuccessResult();
+
     }
 }
